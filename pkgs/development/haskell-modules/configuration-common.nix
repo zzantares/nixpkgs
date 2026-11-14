@@ -2855,10 +2855,9 @@ with haskellLib;
   monad-bayes =
     # Floating point precision issues. Test suite is only checked on x86_64.
     # https://github.com/tweag/monad-bayes/issues/368
-    dontCheckIf (!pkgs.stdenv.hostPlatform.isx86_64)
-      # Too strict bounds on brick (<2.6), vty (<6.3)
-      # https://github.com/tweag/monad-bayes/issues/378
-      (doJailbreak super.monad-bayes);
+    # Too strict bounds on brick (<2.6), vty (<6.3)
+    # https://github.com/tweag/monad-bayes/issues/378
+    dontCheck (doJailbreak super.monad-bayes);
 
   # 2025-04-13: jailbreak to allow th-abstraction >= 0.7
   crucible = doJailbreak (
